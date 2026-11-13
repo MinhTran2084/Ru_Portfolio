@@ -18,7 +18,7 @@ export default function Projects() {
 
       <div className="filters">
         <label>
-          Filter {' '}
+          Filter  {' '}
           <select value={tag} onChange={(e) => setTag(e.target.value)}>
             <option value="all">All</option>
             {allTags.map((t) => (

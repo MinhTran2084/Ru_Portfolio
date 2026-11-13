@@ -26,7 +26,7 @@ export default function ProjectDetail() {
       <h1>{project.title}</h1>
 
       {project.tags?.length > 0 && (
-        <ul className="project-tags">
+        <ul className="tags">
           {project.tags.map((tag) => (
             <li key={tag}>{tag}</li>
           ))}

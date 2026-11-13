@@ -8,6 +8,13 @@ export default function ProjectCard({ project }) {
       )}
       <h3>{project.title}</h3>
       {project.type && <p>{project.type}</p>}
+      {project.tags?.length > 0 && (
+        <ul className="tags">
+          {project.tags.map((tag) => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
+      )}
     </Link>
   )
 }

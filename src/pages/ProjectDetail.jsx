@@ -14,31 +14,48 @@ export default function ProjectDetail() {
     )
   }
 
+  const hasTools = project.tools?.length > 0
+  const hasMeta = project.type || project.role || hasTools || project.year
+  // If there is no cover.* file, the loader uses the first image as the cover,
+  // so leave it out here to avoid showing it twice.
+  const otherImages = project.images.filter((url) => url !== project.cover)
+
   return (
     <article>
       <Link to="/projects">Back to projects</Link>
       <h1>{project.title}</h1>
 
-      <dl>
-        {project.type && (<><dt>Type</dt><dd>{project.type}</dd></>)}
-        {project.year && (<><dt>Year</dt><dd>{project.year}</dd></>)}
-        {project.role && (<><dt>Role</dt><dd>{project.role}</dd></>)}
-        {project.tools?.length > 0 && (
-          <><dt>Tools</dt><dd>{project.tools.join(', ')}</dd></>
-        )}
-        {project.tags?.length > 0 && (
-          <><dt>Tags</dt><dd>{project.tags.join(', ')}</dd></>
-        )}
-      </dl>
+      {project.tags?.length > 0 && (
+        <ul className="project-tags">
+          {project.tags.map((tag) => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
+      )}
+
+      {project.cover && (
+        <img className="project-cover" src={project.cover} alt={project.title} />
+      )}
+
+      {hasMeta && (
+        <dl className="project-meta">
+          {project.type && (<><dt>Type</dt><dd>{project.type}</dd></>)}
+          {project.role && (<><dt>Role</dt><dd>{project.role}</dd></>)}
+          {hasTools && (<><dt>Tools</dt><dd>{project.tools.join(', ')}</dd></>)}
+          {project.year && (<><dt>Year</dt><dd>{project.year}</dd></>)}
+        </dl>
+      )}
 
       {project.brief && (<><h2>Brief</h2><p>{project.brief}</p></>)}
       {project.description && (<><h2>Description</h2><p>{project.description}</p></>)}
 
-      <div className="project-images">
-        {project.images.map((url) => (
-          <img key={url} src={url} alt={project.title} loading="lazy" />
-        ))}
-      </div>
+      {otherImages.length > 0 && (
+        <div className="project-images">
+          {otherImages.map((url) => (
+            <img key={url} src={url} alt={project.title} loading="lazy" />
+          ))}
+        </div>
+      )}
     </article>
   )
 }

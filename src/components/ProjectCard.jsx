@@ -7,7 +7,6 @@ export default function ProjectCard({ project }) {
         <img src={project.cover} alt={project.title} loading="lazy" />
       )}
       <h3>{project.title}</h3>
-      {project.type && <p>{project.type}</p>}
       {project.tags?.length > 0 && (
         <ul className="tags">
           {project.tags.map((tag) => (

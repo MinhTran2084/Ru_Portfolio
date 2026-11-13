@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { formatTag } from '../data/projects'
 
 export default function ProjectCard({ project }) {
   return (
@@ -10,7 +11,7 @@ export default function ProjectCard({ project }) {
       {project.tags?.length > 0 && (
         <ul className="tags">
           {project.tags.map((tag) => (
-            <li key={tag}>{tag}</li>
+            <li key={tag}>{formatTag(tag)}</li>
           ))}
         </ul>
       )}

@@ -29,9 +29,18 @@ const projects = Object.entries(infos).map(([path, info]) => {
   return {
     slug,
     ...info,
+    // Lowercase so "Digital" and "digital" count as one tag.
+    tags: [...new Set((info.tags ?? []).map((t) => String(t).trim().toLowerCase()))],
     cover: coverEntry ? coverEntry[1] : images[0],
     images,
   }
 })
+
+// Display form of a tag: "character-design" -> "Character design".
+// Use it wherever a tag is shown; filtering uses the raw tag.
+export function formatTag(tag) {
+  const text = tag.replace(/-/g, ' ')
+  return text.charAt(0).toUpperCase() + text.slice(1)
+}
 
 export default projects

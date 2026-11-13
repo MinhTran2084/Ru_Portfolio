@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import projects from '../data/projects'
+import projects, { formatTag } from '../data/projects'
 
 // Only shows the fields a project actually has.
 export default function ProjectDetail() {
@@ -28,7 +28,7 @@ export default function ProjectDetail() {
       {project.tags?.length > 0 && (
         <ul className="tags">
           {project.tags.map((tag) => (
-            <li key={tag}>{tag}</li>
+            <li key={tag}>{formatTag(tag)}</li>
           ))}
         </ul>
       )}
@@ -39,10 +39,10 @@ export default function ProjectDetail() {
 
       {hasMeta && (
         <dl className="project-meta">
-          {project.type && (<><dt>Type</dt><dd>{project.type}</dd></>)}
-          {project.role && (<><dt>Role</dt><dd>{project.role}</dd></>)}
-          {hasTools && (<><dt>Tools</dt><dd>{project.tools.join(', ')}</dd></>)}
-          {project.year && (<><dt>Year</dt><dd>{project.year}</dd></>)}
+          {project.type && (<div><dt>Type</dt><dd>{project.type}</dd></div>)}
+          {project.role && (<div><dt>Role</dt><dd>{project.role}</dd></div>)}
+          {hasTools && (<div><dt>Tools</dt><dd>{project.tools.join(', ')}</dd></div>)}
+          {project.year && (<div><dt>Year</dt><dd>{project.year}</dd></div>)}
         </dl>
       )}
 

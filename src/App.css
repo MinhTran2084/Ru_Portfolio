@@ -74,3 +74,23 @@ main,
   background: #eee;
   font-size: 0.9rem;
 }
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  margin: 1rem 0;
+}
+
+.project-meta div {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.project-meta dt {
+  font-weight: 600;
+}
+
+.project-meta dd {
+  margin: 0;
+}

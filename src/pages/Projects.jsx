@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import projects from '../data/projects'
+import projects, { formatTag } from '../data/projects'
 import ProjectCard from '../components/ProjectCard'
 
 export default function Projects() {
@@ -23,7 +23,7 @@ export default function Projects() {
             <option value="all">All</option>
             {allTags.map((t) => (
               <option key={t} value={t}>
-                {t}
+                {formatTag(t)}
               </option>
             ))}
           </select>

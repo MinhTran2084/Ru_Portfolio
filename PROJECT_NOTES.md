@@ -16,7 +16,7 @@ by .github/workflows/deploy.yml.
 ## Site structure
 - Home > About me / Projects / Contact
 - Contact is the footer on every page, and the nav "Contact" button scrolls to it
-- Projects page has one "Sort by" dropdown. Its options are the project tags.
+- Projects page has one "Filter" dropdown. Its options are the project tags.
   Picking a tag shows only the projects with that tag.
 - Project page shows brief, description, type, tools, role and images.
   It only shows fields that exist, so print and media projects can differ.
@@ -40,7 +40,7 @@ by .github/workflows/deploy.yml.
   automatically ("character-design" shows as "Character design"). They are
   lowercased when loaded, so "Digital" and "digital" count as one tag.
 - Use the formatTag helper in src/data/projects.js for every visible tag,
-  including the Sort by options. Filtering uses the raw tag.
+  including the Filter options. Filtering uses the raw tag.
 - The grey pill color is a placeholder until her palette is chosen.
 
 ## Adding a project
